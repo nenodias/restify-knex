@@ -1,60 +1,22 @@
-// Update with your config settings.
-
 module.exports = {
-
-  development: {
-    client: 'pg',
-    connection: {
-      database: 'banco',
-      user:     'postgres',
-      password: 'postgres'
-    },
-    migrations: {
-      tableName: 'knex_migrations',
-      directory: './db/migrations'
-    },
-    seeds: {
-      directory: './db/seeds/dev'
-    },
-    useNullAsDefault: true
+  client: process.env.DB_TYPE,
+  connection: {
+    host:     process.env.DB_HOST,
+    host:     process.env.DB_PORT,
+    database: process.env.DB_NAME,
+    user:     process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD
   },
-
-  test: {
-    client: 'pg',
-    connection: {
-      database: 'banco',
-      user:     'postgres',
-      password: 'postgres'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations',
-      directory: './db/migrations'
-    },
-    seeds: {
-      directory: './db/seeds/test'
-    },
-    useNullAsDefault: true
+  pool: {
+    min: process.env.DB_POOL_MIN,
+    max: process.env.DB_POOL_MAX,
   },
-
-  production: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations',
-      directory: './db/migrations'
-    },
-    seeds: {
-      directory: './db/seeds/production'
-    },
-    useNullAsDefault: true
-  }
-
+  migrations: {
+    tableName: 'knex_migrations',
+    directory: './db/migrations'
+  },
+  seeds: {
+    directory: './db/seeds'
+  },
+  useNullAsDefault: true
 };

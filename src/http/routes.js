@@ -13,9 +13,12 @@ const routes = (server) => {
         next();
     })
 
-    server.get('/', (req, res, next) => {
+    server.get('/', async (req, res, next) => {
         res.send('Enjoy the silence!');
-        next();
+        db('users').where({id:1}).first().then((result) => {
+            console.log(result);
+            next();
+        });
     });
 
 };
