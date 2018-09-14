@@ -1,15 +1,15 @@
 module.exports = {
-  client: 'pg',
+  client: process.env.DB_TYPE,
   connection: {
     host:     process.env.DB_HOST,
-    host:     process.env.DB_PORT,
+    port:     parseInt(process.env.DB_PORT),
     database: process.env.DB_NAME,
     user:     process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD
   },
   pool: {
-    min: process.env.DB_POOL_MIN,
-    max: process.env.DB_POOL_MAX,
+    min: parseInt(process.env.DB_POOL_MIN),
+    max: parseInt(process.env.DB_POOL_MAX),
   },
   migrations: {
     tableName: 'knex_migrations',

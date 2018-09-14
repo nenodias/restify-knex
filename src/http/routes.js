@@ -15,7 +15,7 @@ const routes = (server) => {
 
     server.get('/', async (req, res, next) => {
         res.send('Enjoy the silence!');
-        db('SINCAD').where('NCAD_CGCOCPF_2','>', 120).first().then((result) => {
+        db('sincad').where('ncad_cgcocpf_2','>', 120).first().then((result) => {
             console.log(result);
             next();
         });
