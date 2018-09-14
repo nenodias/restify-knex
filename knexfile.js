@@ -1,5 +1,5 @@
 module.exports = {
-  client: process.env.DB_TYPE,
+  client: 'pg',
   connection: {
     host:     process.env.DB_HOST,
     host:     process.env.DB_PORT,
